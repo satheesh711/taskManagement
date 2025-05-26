@@ -37,3 +37,46 @@ export const verifyToken = async (req, res, next) => {
     return res.status(401).json({ message: 'Token is not valid' });
   }
 };
+
+
+// Middleware to check if user is admin
+export const isAdmin = (req, res, next) => {
+  if (!req.user || req.user.role !== 'admin') {
+    return res.status(403).json({ message: 'Access denied, admin privileges required' });
+  }
+  
+  next();
+};
+
+// Middleware to create audit log
+export const auditLogger = (action) => {
+  return (req, res, next) => {
+    // Store original end method
+    const originalEnd = res.end;
+    
+    // Override end method
+    res.end = function(chunk, encoding) {
+      // Call original end method
+      originalEnd.call(this, chunk, encoding);
+      
+      // Check if response is successful
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        // Log action
+        const logData = {
+          action,
+          userId: req.user?.id,
+          ipAddress: req.ip,
+          requestMethod: req.method,
+          requestUrl: req.originalUrl,
+          requestBody: req.body,
+          responseStatus: res.statusCode
+        };
+        
+        // In a production app, save to database
+        console.log('AUDIT LOG:', JSON.stringify(logData));
+      }
+    };
+    
+    next();
+  };
+};

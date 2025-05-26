@@ -13,9 +13,12 @@ dotenv.config();
 // Import routes
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
+import taskRoutes from './routes/tasks.js';
+import adminRoutes from './routes/admin.js';
 
 // Import database connection
 import db from './config/database.js';
+import js from '@eslint/js';
 
 
 // Initialize app
@@ -38,14 +41,15 @@ db.authenticate()
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-
+app.use('/api/tasks', taskRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
     message: 'Something went wrong!',
-    error: err.message
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined
   });
 });
 
