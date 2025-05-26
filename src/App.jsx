@@ -3,6 +3,7 @@ import Loader from './components/common/Loader';
 import { Route, Routes } from 'react-router-dom';
 import Register from './pages/auth/Register';
 import { AuthProvider } from './context/AuthContext';
+import Login from './pages/auth/Login';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     <AuthProvider >
       <Routes>
         <Route path='/' element={<Register />} />
-        {/* <Route path='/login' element={<Login />} /> */}
+        <Route path='/login' element={<Login />} />
       </Routes>
     </AuthProvider>
   );

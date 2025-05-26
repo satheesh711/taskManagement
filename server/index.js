@@ -12,6 +12,7 @@ dotenv.config();
 
 // Import routes
 import authRoutes from './routes/auth.js';
+import userRoutes from './routes/users.js';
 
 // Import database connection
 import db from './config/database.js';
@@ -36,6 +37,8 @@ db.authenticate()
 
 // API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
