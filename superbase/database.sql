@@ -1,6 +1,7 @@
 -- Database Schema for Smart Task Management App
 
 -- Users Table
+ 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(30) NOT NULL UNIQUE,
@@ -8,12 +9,13 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     role ENUM('user', 'admin') DEFAULT 'user',
     active BOOLEAN DEFAULT TRUE,
-    last_login DATETIME,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    last_login TIMESTAMP NULL DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_email (email),
     INDEX idx_username (username)
 );
+
 
 -- Tasks Table
 CREATE TABLE tasks (
@@ -25,8 +27,8 @@ CREATE TABLE tasks (
     completed BOOLEAN DEFAULT FALSE,
     completed_at DATETIME,
     user_id INT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created_at DATETIME DEFAULT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     INDEX idx_user_due_date (user_id, due_date),
     INDEX idx_user_completed (user_id, completed),
@@ -41,14 +43,15 @@ CREATE TABLE audit_logs (
     record_id INT NOT NULL,
     old_values TEXT,
     new_values TEXT,
-    user_id INT,
+    user_id INT NULL,
     ip_address VARCHAR(50),
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
     INDEX idx_action (action),
     INDEX idx_table_record (table_name, record_id),
     INDEX idx_user (user_id)
 );
+
 
 -- Trigger for Task Audit Logging
 DELIMITER //

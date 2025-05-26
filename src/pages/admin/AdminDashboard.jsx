@@ -27,7 +27,7 @@ const AdminDashboard = () => {
       try {
         // In a real app, this would be an API call
         try {
-  const response = await fetch('http://localhost:5000/api/admin/stats', {
+  const response = await fetch('https://taskmanagement-akqj.onrender.com/api/admin/stats', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

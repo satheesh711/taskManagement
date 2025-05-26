@@ -31,7 +31,7 @@ export const TaskProvider = ({ children }) => {
       });
 
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/tasks?${params}`, {
+      const response = await fetch(`https://taskmanagement-akqj.onrender.com/api/tasks?${params}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ export const TaskProvider = ({ children }) => {
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch('http://localhost:5000/api/tasks/stats', {
+      const response = await fetch('https://taskmanagement-akqj.onrender.com/api/tasks/stats', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export const TaskProvider = ({ children }) => {
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+      const response = await fetch(`https://taskmanagement-akqj.onrender.com/api/tasks/${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ export const TaskProvider = ({ children }) => {
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch('http://localhost:5000/api/tasks', {
+      const response = await fetch('https://taskmanagement-akqj.onrender.com/api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ export const TaskProvider = ({ children }) => {
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+      const response = await fetch(`https://taskmanagement-akqj.onrender.com/api/tasks/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -191,7 +191,7 @@ export const TaskProvider = ({ children }) => {
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+      const response = await fetch(`https://taskmanagement-akqj.onrender.com/api/tasks/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}` // include if API requires authentication
@@ -222,7 +222,7 @@ export const TaskProvider = ({ children }) => {
     try {
       const token = localStorage.getItem('token');
 
-      const response = await fetch(`http://localhost:5000/api/tasks/${id}/status`, {
+      const response = await fetch(`https://taskmanagement-akqj.onrender.com/api/tasks/${id}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

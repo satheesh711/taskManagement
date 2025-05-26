@@ -40,7 +40,7 @@ const UserManagement = () => {
       try {
         // In a real app, this would be an API call
         try {
-          const response = await fetch('http://localhost:5000/api/admin/users', {
+          const response = await fetch('https://taskmanagement-akqj.onrender.com/api/admin/users', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ const UserManagement = () => {
       // In a real app, this would be an API call
       const token = localStorage.getItem('token');
 
-      const response = await fetch('http://localhost:5000/api/admin/users', {
+      const response = await fetch('https://taskmanagement-akqj.onrender.com/api/admin/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -159,7 +159,7 @@ const UserManagement = () => {
       // In a real app, this would be an API call
       const token = localStorage.getItem('token');
 
-const updatedUsers = await fetch(`http://localhost:5000/api/admin/users/${selectedUser.id}/status`, {
+const updatedUsers = await fetch(`https://taskmanagement-akqj.onrender.com/api/admin/users/${selectedUser.id}/status`, {
   method: 'PATCH',
   headers: {
     'Content-Type': 'application/json',
