@@ -162,7 +162,7 @@ const UserManagement = () => {
       const token = localStorage.getItem('token');
 
 const updatedUsers = await fetch(`https://taskmanagement-akqj.onrender.com/api/admin/users/${selectedUser.id}/status`, {
-  method: 'PATCH',
+  method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}` // Include if your route is protected

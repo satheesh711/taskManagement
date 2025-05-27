@@ -126,7 +126,7 @@ router.post('/users', auditLogger('admin_create_user'), async (req, res) => {
 // @route   PATCH /api/admin/users/:id/status
 // @desc    Activate or deactivate a user
 // @access  Private (Admin only)
-router.patch('/users/:id/status', auditLogger('admin_update_user_status'), async (req, res) => {
+router.put('/users/:id/status', auditLogger('admin_update_user_status'), async (req, res) => {
   try {
     const userId = req.params.id;
     const { active } = req.body;

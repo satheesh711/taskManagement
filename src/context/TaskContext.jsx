@@ -223,7 +223,7 @@ export const TaskProvider = ({ children }) => {
       const token = localStorage.getItem('token');
 
       const response = await fetch(`https://taskmanagement-akqj.onrender.com/api/tasks/${id}/status`, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}` // include if required
