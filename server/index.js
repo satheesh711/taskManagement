@@ -19,7 +19,10 @@ import aduitRoutes from './routes/aduit.js'
 
 // Import database connection
 import db from './config/database.js';
-import js from '@eslint/js';
+app.use(cors({
+  origin: "https://task-management-ebon-eta.vercel.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+}));
 
 
 // Initialize app

@@ -8,7 +8,6 @@ const router = express.Router();
 router.get('/user/:id', async (req, res) => {
   try {
     const userId = req.params.id;
-
     const logs = await AuditLog.findAll({
       where: { user_id: userId },
       include: [
