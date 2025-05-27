@@ -285,7 +285,7 @@ router.delete('/:id', auditLogger('delete_task'), async (req, res) => {
 // @route   PATCH /api/tasks/:id/status
 // @desc    Update task completion status
 // @access  Private
-router.patch('/:id/status', auditLogger('update_task_status'), async (req, res) => {
+router.put('/:id/status', auditLogger('update_task_status'), async (req, res) => {
   try {
     const { completed } = req.body;
     const taskId = req.params.id;
