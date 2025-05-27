@@ -19,10 +19,7 @@ import aduitRoutes from './routes/aduit.js'
 
 // Import database connection
 import db from './config/database.js';
-app.use(cors({
-  origin: "https://task-management-ebon-eta.vercel.app",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-}));
+
 
 
 // Initialize app
@@ -36,11 +33,17 @@ app.use(morgan('dev')); // Logging
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors({
+  origin: "https://task-management-ebon-eta.vercel.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+}));
 
 // Test database connection
 db.authenticate()
   .then(() => console.log('Database connection established'))
   .catch(err => console.error('Database connection error:', err));
+
+
 
 // API Routes
 app.use('/api/auth', authRoutes);
