@@ -36,11 +36,43 @@ const Login = () => {
     }
   };
 
-  const handleGoogleLogin = () => {
-    // In a real implementation, this would redirect to Google OAuth
-    alert('Google login would be implemented with a real backend');
-  };
+  const handleAdminLogin = async () => {
+    let adminData = {
+      email: 'admin@gmail.com',
+      password: 'Admin@123'
+    };
+    setLoading(true);
+    setError('');
+    try {
+      await login(adminData);
+      navigate('/dashboard');
+    }
+    catch (err) {
+      setError(err.toString());
+    }
+    finally {
+      setLoading(false);
+    }
+  }
 
+  const handleUserLogin = async () => {
+    let userData = {
+      email: 'user1@gmail.com',
+      password : 'User1'
+    }
+    setLoading(true);
+    setError('');
+    try {
+      await login(userData);
+      navigate('/dashboard');
+    }
+    catch (err) {
+      setError(err.toString());
+    } 
+    finally {
+      setLoading(false);
+    }
+  }
   return (
     <Container className="py-5 fade-in">
       <Row className="justify-content-center">
@@ -105,10 +137,16 @@ const Login = () => {
                 <Button 
                   variant="outline-secondary" 
                   className="w-100 py-2 mb-3"
-                  onClick={handleGoogleLogin}
+                  onClick={handleAdminLogin}
                 >
-                  <FaGoogle className="me-2" />
-                  Sign in with Google
+                  Guest Admin
+                </Button>
+                <Button 
+                  variant="outline-secondary" 
+                  className="w-100 py-2 mb-3"
+                  onClick={handleUserLogin}
+                >
+                  Guest user
                 </Button>
                 
                 <div className="text-center mt-4">

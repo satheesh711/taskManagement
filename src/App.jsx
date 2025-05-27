@@ -25,6 +25,7 @@ import NotFound from './pages/NotFound';
 // Context
 import { AuthProvider } from './context/AuthContext';
 import { TaskProvider } from './context/TaskContext';
+import AuditDashboard from './pages/admin/AduitDashboard';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -52,6 +53,7 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path='aduitdashboard' element={<AuditDashboard />} />
               <Route path="/tasks" element={<TaskList />} />
               <Route path="/tasks/new" element={<TaskCreate />} />
               <Route path="/tasks/:id" element={<TaskView />} />

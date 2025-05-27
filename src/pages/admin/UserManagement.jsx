@@ -17,6 +17,7 @@ import { CSVLink } from 'react-csv';
 import { utils, writeFileXLSX } from 'xlsx';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
+import { useNavigate } from 'react-router-dom';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
@@ -33,6 +34,7 @@ const UserManagement = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   // Fetch users on component mount
   useEffect(() => {
@@ -317,7 +319,7 @@ if (!response.ok) {
               <tbody>
                 {filteredUsers.length > 0 ? (
                   filteredUsers.map(user => (
-                    <tr key={user.id}>
+                    <tr key={user.id} onClick={() => navigate('/aduitdashboard', { state: { userId: user.id } })}>
                       <td>{user.username}</td>
                       <td>{user.email}</td>
                       <td>
