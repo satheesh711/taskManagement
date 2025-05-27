@@ -36,6 +36,7 @@ app.use(cookieParser());
 app.use(cors({
   origin: "https://task-management-ebon-eta.vercel.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
 }));
 
 // Test database connection
