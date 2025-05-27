@@ -15,6 +15,7 @@ import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import taskRoutes from './routes/tasks.js';
 import adminRoutes from './routes/admin.js';
+import aduitRoutes from './routes/aduit.js'
 
 // Import database connection
 import db from './config/database.js';
@@ -43,6 +44,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/audit', aduitRoutes);
+
+
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
